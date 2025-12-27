@@ -30,25 +30,30 @@ const AuthForm = () => {
 
   return ( 
     <div className={`form-box ${mode}`}> 
-
-    {/* Form Container with dynamic class based on mode */}
-      <div className="form-details">
-        <h2>{mode === "login" ? "Welcome Back" : "Create Account"}</h2>
-        <p>
-          {mode === "login"
-            ? "To enter the Ninja world, please log in"
-            : "To become a part of the Ninja world, please sign up"}
-        </p>
+    
+        {/* Form Container with dynamic class based on mode */}
+        <div className="form-details">
+            <h2 className="text-2xl font-bold mb-2">
+                {mode === "login" ? "Welcome Back" : "Create Account"}
+            </h2>
+            <p className="text-sm text-gray-600 mb-6">
+            {mode === "login"
+                ? "To enter the Ninja world, please log in"
+                : "To become a part of the Ninja world, please sign up"}
+            </p>
       </div>
 
-      <div className="form-content">
-        <h2>{mode === "login" ? "LOGIN" : "SIGN UP"}</h2>
+      <div className="form-content flex flex-col">
+        <h2 className="text-xl font-semibold mb-4">
+            {mode === "login" ? "LOGIN" : "SIGN UP"}
+        </h2>
 
-        <form onSubmit={handleSubmit}>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="input-field">
             <input
               type="text"
-              value={username}
+              placeholder="Username"
+              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               onChange={(e) => setUsername(e.target.value)}
               required
             />
@@ -56,31 +61,29 @@ const AuthForm = () => {
           </div>
 
           {mode === "signup" && (
-            <div className="policy-text">
-              <input type="checkbox" required />
-              <label>
-                I agree to the <a href="#">Terms & Conditions</a>
-              </label>
-            </div>
+            <label className="flex items-center gap-2 text-sm">
+                <input type="checkbox" required />
+                I agree to the <a href="#" className="text-blue-500 underline">Terms & Conditions</a>
+            </label>
           )}
 
-          <button type="submit" disabled={loading}>
+          <button type="submit"
+                className="bg-red-500 text-white py-2 rounded-md hover:bg-blue-600 disabled:bg-blue-300"
+                disabled={loading}>
             {loading ? "Loading..." : mode === "login" ? "Log In" : "Sign Up"}
           </button>
         </form>
 
         {error && <p className="error">{error}</p>}
 
-        <div className="bottom-link">
+        <div className="mt-4 text-sm text-center">
           {mode === "login" ? (
             <>
-              Don't have an account?{" "}
-              <a onClick={() => setMode("signup")}>Signup</a>
+                Don't have an account?{" "}<button onClick={() => setMode("signup")} className="text-blue-500 underline">Signup</button>
             </>
           ) : (
             <>
-              Already have an account?{" "}
-              <a onClick={() => setMode("login")}>Login</a>
+                Already have an account?{" "}<button onClick={() => setMode("login")} className="text-blue-500 underline">Login</button>
             </>
           )}
         </div>
