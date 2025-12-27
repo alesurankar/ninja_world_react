@@ -9,8 +9,7 @@ const Hero = () => {
                 <h1 className='text-5xl lg:text-7xl text-textColor font-semibold'>{`NinjaStrike`}</h1>
                 
                 <p className='text-lg text-textColor opacity-50 py-10'>
-                    This is a sample landing page, created with Figma and Anima.
-                    No coding involved.
+                    This is a sample landing page. Build using React and Tailwind CSS.
                 </p>
                 
                 <Button
