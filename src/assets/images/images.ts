@@ -8,6 +8,8 @@ import Weapon4 from "./shuriken.png";
 import Ninja from "./ninja.png";
 import HeroBg from "./hero-bg.jpg";
 import Fighter from "./fighter.jpg";
+import Login from "./login-img.jpg";
+import Signup from "./signup-img.jpg";
 
 export {
   Logo1,
@@ -20,4 +22,6 @@ export {
   Ninja,
   HeroBg,
   Fighter,
+  Login,
+  Signup,
 };

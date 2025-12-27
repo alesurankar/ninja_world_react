@@ -1,7 +1,13 @@
 import { useState } from "react";
 import API from "../api/auth";
+import { Login } from "../assets/images/images";
+import { Signup } from "../assets/images/images";
 
-const AuthForm = () => {
+type AuthFormProps = {
+  className?: string
+};
+
+const AuthForm = ({ className = "" }: AuthFormProps) => {
   const [mode, setMode] = useState<"login" | "signup">("login"); // the type is restricted to "login" or "signup", defaulting to "login".
   const [username, setUsername] = useState(""); // state to hold the username input
   const [error, setError] = useState<string | null>(null); // state to hold error messages
@@ -28,9 +34,9 @@ const AuthForm = () => {
     }
   };
 
-  return ( 
-    <div className={`form-box ${mode}`}> 
-    
+  return (
+    <div className="bg-cover bg-center bg-no-repeat w-full h-full" style={{backgroundImage: `url(${mode === "login" ? Login : Signup})`,}}>
+
         {/* Form Container with dynamic class based on mode */}
         <div className="form-details">
             <h2 className="text-2xl font-bold mb-2">
