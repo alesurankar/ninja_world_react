@@ -36,6 +36,7 @@ const AuthForm = ({ className = "" }: AuthFormProps) => {
 
   return (
     <div className="bg-cover bg-center bg-no-repeat w-full h-full" style={{backgroundImage: `url(${mode === "login" ? Login : Signup})`,}}>
+        <div className={`form-box ${mode} ${className}`}></div>
 
         {/* Form Container with dynamic class based on mode */}
         <div className="form-details">

@@ -29,19 +29,12 @@ const Navbar = () => {
             
             {/* Auth Buttons */}
             <div className='hidden lg:flex items-center justify-between'>
-
-                <Button
-                    title='Sign up'
-                    mainClassName='bg-red-500 hover:bg-red-600'
-                    titleClassName='hover:text-whiteColor'
-                    onClick={() => setShowAuthModal(true)} // show AuthForm
-                />
                 
                 <Button
                     title='Log in'
-                    mainClassName='bg-gray-600 hover:bg-gray-800'
-                    titleClassName='text-whiteColor'
-                    onClick={() => setShowAuthModal(true)} // show AuthForm
+                    mainClassName='bg-red-500 hover:bg-red-600'
+                    titleClassName='text-xl font-bold uppercase hover:text-whiteColor'
+                    onClick={() => setShowAuthModal(true)}
                     //onClick={handleRunTestDB} /////////// attach onClick handler to Log In button
                 />
             </div>
