@@ -1,5 +1,5 @@
-import { BlackNinja } from '../assets/images/images'
-import { QuoteIcon } from '../assets/icons/icons'
+import { BlackNinja } from '../../assets/images/images'
+import { QuoteIcon } from '../../assets/icons/icons'
 
 interface QuoteBlockProps {
   image?: string;

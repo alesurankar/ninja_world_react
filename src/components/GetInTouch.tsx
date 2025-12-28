@@ -1,4 +1,4 @@
-import Button from './Button'
+import Button from './utils/Button'
 import { Fighter } from '../assets/images/images'
 
 const GetInTouch = () => {

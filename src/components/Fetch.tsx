@@ -1,4 +1,4 @@
-import QuoteBlock from "./QuoteBlock";
+import QuoteBlock from "./utils/QuoteBlock";
 import { RedNinja } from '../assets/images/images'
 
 const Fetch = () => {

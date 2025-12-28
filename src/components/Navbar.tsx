@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Logo1 } from '../assets/images/images'
-import Button from './Button'
-import AuthModal from './AuthModal'
+import Button from './utils/Button'
+import AuthModal from './utils/AuthModal'
 //import axios from 'axios'; //////////////// import axios for HTTP requests
 
 const Navbar = () => {

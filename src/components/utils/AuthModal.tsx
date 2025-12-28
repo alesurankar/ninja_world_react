@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Login } from "../assets/images/images";
-import { Signup } from "../assets/images/images";
+import { Login } from "../../assets/images/images";
+import { Signup } from "../../assets/images/images";
 
 interface Props {
   onClose: () => void;
