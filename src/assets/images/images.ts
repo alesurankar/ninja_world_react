@@ -5,7 +5,8 @@ import Weapon1 from "./katana.jpg";
 import Weapon2 from "./kusarifundo.jpg";
 import Weapon3 from "./bo.jpg";
 import Weapon4 from "./shuriken.png";
-import Ninja from "./ninja.png";
+import BlackNinja from "./blackNinja.png";
+import RedNinja from "./redNinja.png";
 import HeroBg from "./hero-bg.jpg";
 import Fighter from "./fighter.jpg";
 import Login from "./login-img.jpg";
@@ -19,7 +20,8 @@ export {
   Weapon2,
   Weapon3,
   Weapon4,
-  Ninja,
+  BlackNinja,
+  RedNinja,
   HeroBg,
   Fighter,
   Login,
