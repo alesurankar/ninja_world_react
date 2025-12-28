@@ -10,7 +10,7 @@ interface Props {
 const AuthModal = ({ onClose }: Props) => {
   const [mode, setMode] = useState<"login" | "signup">("login");
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md">
       {/* Modal box */}
       <div className="rounded-xl w-full max-w-4xl bg-white grid grid-cols-2 overflow-hidden">
         
