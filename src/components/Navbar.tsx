@@ -1,21 +1,11 @@
 import { useState } from 'react'
 import { Logo1 } from '../assets/images/images'
-import Button from './utils/Button'
-import AuthModal from './utils/AuthModal'
-//import axios from 'axios'; //////////////// import axios for HTTP requests
+import Button from '../utils/Button'
+import AuthModal from '../utils/AuthModal'
 
 const Navbar = () => {
     const [mode, setMode] = useState(false); // track if AuthModal is visible
-
-    // const handleRunTestDB = async () => { /////////// function to handle TestDB run
-    //     try {
-    //         const response = await axios.get('http://localhost:4000/api/v1/run-test-db');
-    //         console.log(response.data);
-    //     } catch (error) {
-    //         console.error('Error running TestDB:', error);
-    //     }
-    // };
-
+    
     return (
         <nav className='w-screen p-6 bg-green-100 lg:px-24 lg:py-8 lg:flex lg:items-center lg:justify-between'>
             {/* Logo Section */}
@@ -35,7 +25,6 @@ const Navbar = () => {
                     mainClassName='bg-[#7c2923] hover:bg-[#d5453a]'
                     titleClassName='text-3xl text-white font-bold uppercase'
                     onClick={() => setMode(true)}
-                    //onClick={handleRunTestDB} /////////// attach onClick handler to Log In button
                 />
             </div>
             {/* Modal */}

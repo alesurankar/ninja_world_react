@@ -1,11 +1,13 @@
-import { QuoteBlock } from "./utils/QuoteBlock";
-import { QuoteIn } from "./utils/QuoteBlock";
+import { QuoteBlock } from "../utils/QuoteBlock";
+import { QuoteIn } from "../utils/QuoteBlock";
 import { RedNinja } from '../assets/images/images'
+
+const id = "64f000000000000000000123" // temporary hardcoded id
 
 const Fetch = () => {
     return (
         <>
-            <QuoteIn />
+            <QuoteIn productId={id}/>
             <QuoteBlock
                 text="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                 author="Ninja Warrior"

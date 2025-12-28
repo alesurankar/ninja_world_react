@@ -1,4 +1,4 @@
-import Button from './utils/Button'
+import Button from '../utils/Button'
 import { HeroBg } from '../assets/images/images'
 
 const Hero = () => {

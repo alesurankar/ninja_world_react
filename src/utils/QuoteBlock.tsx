@@ -1,11 +1,17 @@
-import { BlackNinja } from '../../assets/images/images'
-import { QuoteIcon } from '../../assets/icons/icons'
-import Button from './Button';
+import { useState } from "react"
+import { BlackNinja } from '../assets/images/images'
+import { QuoteIcon } from '../assets/icons/icons'
+import api from './api'
+import Button from './Button'
 
 interface QuoteBlockProps {
   image?: string;
   text: string;
   author?: string;
+}
+
+interface QuoteInProps {
+  productId: string;
 }
 
 const QuoteBlock = ({image = BlackNinja,text,author = "Anonymous"}: QuoteBlockProps) => {
@@ -27,31 +33,50 @@ const QuoteBlock = ({image = BlackNinja,text,author = "Anonymous"}: QuoteBlockPr
     )
 }
 
-const QuoteIn = () => {
+const QuoteIn = ({ productId }: QuoteInProps) => {
+    const [comment, setComment] = useState("");
+    const [rating, setRating] = useState(5);
+
+    const submitReview = async () => {
+        if (!comment) return alert("Comment cannot be empty!");
+
+        try {
+            const response = await api.put("/review", {
+                comment,
+                rating,
+                productId,
+            });
+            console.log("API response:", response.data);
+            alert("Review submitted!");
+            setComment("");
+        } catch (err: any) {
+            console.error("API error:", err.response?.data || err.message);
+            alert("Failed to submit review");
+        }
+    };
+
     return (
         <section className="bg-gray-400 ">
             {/* Left side */}
             <div className="pt-4 pl-4">
-                <input 
-                    type="file" 
-                    accept="image/*"
-                    className="pb-4"
-                />
                 <div className="pb-8">
                     <Button
                         title='Submit'
                         mainClassName='bg-[#4a5748] hover:bg-[#283227ff]'
                         titleClassName='text-xl text-white'
+                        onClick={submitReview}
                     /> 
                 </div>
             </div> 
             {/* Right side */}
             <div className="lg:-mt-24 lg:ml-80 pb-10 lg:pr-10">
                 <div >
-                    <textarea placeholder="write your thing here..." className="w-full border border-gray-300 rounded-md px-3 py-2 text-md lg:text-lg focus:outline-none focus:ring-2 focus:ring-black"></textarea>
-                </div>
-                <div className="lg:ml-80">
-                    <input type="text" placeholder="Author" className="w-full border border-gray-300 rounded-md px-3 py-2 text-lg lg:text-xl font-bold focus:outline-none focus:ring-2 focus:ring-black"/>
+                    <textarea 
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    placeholder="write your thing here..." 
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-md lg:text-lg focus:outline-none focus:ring-2 focus:ring-black"
+                    />
                 </div>
             </div>
         </section>

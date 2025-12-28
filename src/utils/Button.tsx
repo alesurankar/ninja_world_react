@@ -3,7 +3,7 @@ interface Props {
     titleClassName?: string;
     color?: string;
     mainClassName?: string;
-    onClick?: () => void; ///////////// onClick event handler
+    onClick?: () => void;
 }
 
 const Button = (props: Props) => {

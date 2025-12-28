@@ -4,6 +4,7 @@
  */
 
 const express = require('express');
+const cors = require('cors'); // added
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -12,6 +13,12 @@ const fileUpload = require('express-fileupload');
 
 // Initialize Express application
 const app = express();
+
+// Enable CORS
+app.use(cors({
+    origin: "http://localhost:3000", // your frontend URL
+    credentials: true,               // allow cookies to be sent
+}));
 
 // Environment Configuration
 // Load environment variables from config file in development mode
