@@ -17,7 +17,7 @@ const Navbar = () => {
     // };
 
     return (
-        <nav className='w-screen p-8 bg-green-100 lg:px-24 lg:py-8 lg:flex lg:items-center lg:justify-between'>
+        <nav className='w-screen p-6 bg-green-100 lg:px-24 lg:py-8 lg:flex lg:items-center lg:justify-between'>
             {/* Logo Section */}
             <div className='shrink-0 w-40 cursor-pointer'>
                 <img
@@ -28,12 +28,12 @@ const Navbar = () => {
             </div>
             
             {/* Auth Buttons */}
-            <div className='hidden lg:flex items-center justify-between'>
+            <div className='flex items-center justify-between'>
                 
                 <Button
                     title='Log in'
-                    mainClassName='bg-red-500 hover:bg-red-600'
-                    titleClassName='text-xl font-bold uppercase hover:text-whiteColor'
+                    mainClassName='bg-[#7c2923] hover:bg-[#d5453a]'
+                    titleClassName='text-3xl text-white font-bold uppercase'
                     onClick={() => setMode(true)}
                     //onClick={handleRunTestDB} /////////// attach onClick handler to Log In button
                 />

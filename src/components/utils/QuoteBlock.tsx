@@ -9,9 +9,9 @@ interface QuoteBlockProps {
 
 const QuoteBlock = ({image = BlackNinja,text,author}: QuoteBlockProps) => {
   return (
-        <section className='relative w-screen bg-gray-400 p-6 lg:p-12 flex flex-col lg:flex-row border-t border-b border-black'> 
+        <section className='relative w-full bg-gray-400 p-6 lg:p-12 flex flex-col lg:flex-row border-t border-b border-black'> 
             <div className="shrink-0 w-24 lg:w-40 lg:-mt-6">
-                <img src={image} alt='ninja' className='w-full h-full'/>
+                <img src={image} alt='ninja' className='w-full h-full object-contain'/>
             </div>
             <div>
                 <div className="shrink-0 lg:mx-6 w-8 lg:w-14">
