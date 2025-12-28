@@ -10,7 +10,7 @@ const Video = () => {
                 controls
                 playsInline
                 muted
-                autoPlay
+                //autoPlay
             />
         </section>
     )

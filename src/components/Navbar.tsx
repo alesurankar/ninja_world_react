@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import { Logo1 } from '../assets/images/images'
 import Button from './Button'
-import AuthModal from './AuthModal';
+import AuthModal from './AuthModal'
 //import axios from 'axios'; //////////////// import axios for HTTP requests
 
 const Navbar = () => {
-    const [showAuthModal, setShowAuthModal] = useState(false); // track if AuthModal is visible
+    const [mode, setMode] = useState(false); // track if AuthModal is visible
 
     // const handleRunTestDB = async () => { /////////// function to handle TestDB run
     //     try {
@@ -34,12 +34,12 @@ const Navbar = () => {
                     title='Log in'
                     mainClassName='bg-red-500 hover:bg-red-600'
                     titleClassName='text-xl font-bold uppercase hover:text-whiteColor'
-                    onClick={() => setShowAuthModal(true)}
+                    onClick={() => setMode(true)}
                     //onClick={handleRunTestDB} /////////// attach onClick handler to Log In button
                 />
             </div>
             {/* Modal */}
-            {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
+            {mode && <AuthModal onClose={() => setMode(false)} />}
         </nav>
     )
 }
