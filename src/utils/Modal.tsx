@@ -1,6 +1,6 @@
 interface ModalProps {
-  onClose: () => void;
-  children: React.ReactNode;
+  onClose?: () => void;
+  children?: React.ReactNode;
   maxWidth?: string;
   padding?: string;
 }

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Button from '../../../utils/Button'
 import Modal from '../../../utils/Modal'
+import AddItemForm from './AddItemForm'
+
 
 const Navbar = () => {
     const [show, setShow] = useState(false);
@@ -20,14 +22,7 @@ const Navbar = () => {
             {/* Modal */}
             {show && (
                 <Modal onClose={() => setShow(false)} maxWidth="max-w-xl" padding="p-6">
-                <h2 className="text-lg font-bold mb-4">Add Item</h2>
-                <form className="flex flex-col gap-2">
-                    <input type="text" placeholder="Item Name" className="border p-2 rounded" />
-                    <input type="number" placeholder="Price" className="border p-2 rounded" />
-                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded mt-2">
-                    Submit
-                    </button>
-                </form>
+                    <AddItemForm onSuccess={() => setShow(false)} />
                 </Modal>
             )}
         </nav>
