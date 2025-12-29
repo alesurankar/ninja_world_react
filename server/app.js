@@ -37,14 +37,12 @@ const user = require('./routes/userRoute');
 const product = require('./routes/productRoute');
 const order = require('./routes/orderRoute');
 const payment = require('./routes/paymentRoute');
-const testRoute = require('./routes/testRoute');
 
 // Mount API Routes with /api/v1 prefix
 app.use('/api/v1', user);
 app.use('/api/v1', product);
 app.use('/api/v1', order);
 app.use('/api/v1', payment);
-app.use('/api/v1', testRoute);
 
 // Deployment Configuration
 __dirname = path.resolve();

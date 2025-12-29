@@ -10,10 +10,7 @@ dist/
 # Server files
 server/controllers/*
 server/data/*
-server/middlewares/*
 server/models/*
-server/routes/*
-!server/routes/testRoute.js
 
 # Environment files
 !config.env.example
