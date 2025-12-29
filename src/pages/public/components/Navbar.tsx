@@ -4,7 +4,7 @@ import Button from '../../../utils/Button'
 import AuthModal from './AuthModal'
 
 const Navbar = () => {
-    const [mode, setMode] = useState(false); // track if AuthModal is visible
+    const [show, setShow] = useState(false);
     
     return (
         <nav className='w-screen p-6 bg-green-100 lg:px-24 lg:py-8 lg:flex lg:items-center lg:justify-between'>
@@ -24,11 +24,11 @@ const Navbar = () => {
                     title='Log in'
                     mainClassName='bg-[#7c2923] hover:bg-[#d5453a]'
                     titleClassName='text-3xl text-white font-bold uppercase'
-                    onClick={() => setMode(true)}
+                    onClick={() => setShow(true)}
                 />
             </div>
             {/* Modal */}
-            {mode && <AuthModal onClose={() => setMode(false)} />}
+            {show && <AuthModal onClose={() => setShow(false)} />}
         </nav>
     )
 }
