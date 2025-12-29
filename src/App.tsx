@@ -1,38 +1,23 @@
-/**
- * Main App Component
- * Root component that renders the complete landing page
- * Organizes all sections from top to bottom
- */
-
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Video from './components/Video'
-import Tools from './components/Tools'
-import Weapons from './components/Weapons'
-import GetInTouch from './components/GetInTouch'
-import Fetch from './components/Fetch'
-import Footer from './components/Footer'
+import { Routes, Route } from "react-router-dom";
+import AdminPage from "./pages/admin/AdminPage";
+import LandingPage from "./pages/public/LandingPage";
+import AdminLayout from "./layouts/AdminLayout";
+import PublicLayout from "./layouts/PublicLayout";
 
 const App = () => {
   return (
-    <div className='main'>
-      <Navbar />
+    <Routes>
+      {/* Public pages wrapped in PublicLayout */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<LandingPage />} />
+      </Route>
 
-      <Hero />
+      {/* Admin pages wrapped in AdminLayout */}
+      <Route element={<AdminLayout />}>
+        <Route path="/admin" element={<AdminPage />} />
+      </Route>
+    </Routes>
+  );
+};
 
-      <Video />
-
-      <Tools />
-    
-      <Weapons />
-
-      <GetInTouch />
-      
-      <Fetch />
-
-      <Footer />
-    </div>
-  )
-}
-
-export default App
+export default App;
