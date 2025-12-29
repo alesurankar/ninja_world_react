@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import AdminPage from "./pages/admin/AdminPage";
 import LandingPage from "./pages/public/LandingPage";
-import AdminLayout from "./layouts/AdminLayout";
 import PublicLayout from "./layouts/PublicLayout";
+import AdminLayout from "./layouts/AdminLayout";
+import ProtectedAdminLayout from "./layouts/ProtectedAdminLayout";
 
 const App = () => {
   return (
@@ -13,8 +14,10 @@ const App = () => {
       </Route>
 
       {/* Admin pages wrapped in AdminLayout */}
-      <Route element={<AdminLayout />}>
-        <Route path="/admin" element={<AdminPage />} />
+      <Route element={<ProtectedAdminLayout />}>
+        <Route element={<AdminLayout />}>
+          <Route path="/admin" element={<AdminPage />} />
+        </Route>
       </Route>
     </Routes>
   );

@@ -13,7 +13,7 @@ exports.isAuthenticatedUser = asyncErrorHandler(async (req, res, next) => {
         req.user = {
             _id: "64f000000000000000000001",
             name: "Dev User",
-            role: "user",
+            role: "admin",
         };
         return next();
     }
