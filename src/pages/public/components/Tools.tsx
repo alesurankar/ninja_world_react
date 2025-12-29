@@ -1,4 +1,4 @@
-import { Tools } from '../assets/images/images'
+import { Tools } from '../../../assets/images/images'
 
 const Partners = () => {
     return (

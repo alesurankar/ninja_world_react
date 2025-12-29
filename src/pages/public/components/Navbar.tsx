@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Logo1 } from '../assets/images/images'
-import Button from '../utils/Button'
-import AuthModal from '../utils/AuthModal'
+import { Logo1 } from '../../../assets/images/images'
+import Button from '../../../utils/Button'
+import AuthModal from './AuthModal'
 
 const Navbar = () => {
     const [mode, setMode] = useState(false); // track if AuthModal is visible

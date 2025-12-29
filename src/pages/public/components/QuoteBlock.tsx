@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { BlackNinja } from '../assets/images/images'
-import { QuoteIcon } from '../assets/icons/icons'
-import api from './api'
-import Button from './Button'
+import { BlackNinja } from '../../../assets/images/images'
+import { QuoteIcon } from '../../../assets/icons/icons'
+import api from '../../../utils/api'
+import Button from '../../../utils/Button'
 
 interface QuoteBlockProps {
   image?: string;

@@ -1,4 +1,4 @@
-import { IntroVideo } from '../assets/videos/videos'
+import { IntroVideo } from '../../../assets/videos/videos'
 
 const Video = () => {
     return (

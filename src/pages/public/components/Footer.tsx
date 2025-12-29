@@ -1,6 +1,6 @@
-import { Logo2 } from '../assets/images/images'
-import Button from '../utils/Button'
-import { FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from '../assets/icons/icons'
+import { Logo2 } from '../../../assets/images/images'
+import Button from '../../../utils/Button'
+import { FacebookIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from '../../../assets/icons/icons'
 
 const Footer = () => {
 

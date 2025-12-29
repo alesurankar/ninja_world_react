@@ -1,6 +1,6 @@
-import { QuoteBlock } from "../utils/QuoteBlock";
-import { QuoteIn } from "../utils/QuoteBlock";
-import { RedNinja } from '../assets/images/images'
+import { QuoteBlock } from "./QuoteBlock";
+import { QuoteIn } from "./QuoteBlock";
+import { RedNinja } from '../../../assets/images/images'
 
 const id = "64f000000000000000000123" // temporary hardcoded id
 

@@ -1,4 +1,4 @@
-import { Weapon1, Weapon2, Weapon3, Weapon4 } from '../assets/images/images';
+import { Weapon1, Weapon2, Weapon3, Weapon4 } from '../../../assets/images/images';
 
 interface Weapon {
     icon: any;           

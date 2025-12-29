@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Login } from "../assets/images/images";
-import { Signup } from "../assets/images/images";
-import Button from "./Button";
+import { Login } from "../../../assets/images/images";
+import { Signup } from "../../../assets/images/images";
+import Button from "../../../utils/Button";
 
 interface Props {
   onClose: () => void;
