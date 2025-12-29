@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Logo1 } from '../../../assets/images/images'
 import Button from '../../../utils/Button'
-import AuthModal from './AuthModal'
+import Modal from '../../../utils/Modal'
+import AuthForm from './AuthForm'
 
 const Navbar = () => {
     const [show, setShow] = useState(false);
@@ -28,7 +29,11 @@ const Navbar = () => {
                 />
             </div>
             {/* Modal */}
-            {show && <AuthModal onClose={() => setShow(false)} />}
+            {show && (
+                <Modal onClose={() => setShow(false)} maxWidth="max-w-3xl">
+                    <AuthForm onSuccess={() => setShow(false)} />
+                </Modal>
+            )}
         </nav>
     )
 }
