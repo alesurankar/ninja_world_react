@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Login } from "../../../assets/images/images";
 import { Signup } from "../../../assets/images/images";
 import Button from "../../../utils/Button";
-
+import api from "../../../utils/api";
+//import axios from "axios";
+import { BlackNinja } from "../../../assets/images/images";
 
 interface AuthFormProps {
   onSuccess: () => void;
@@ -16,6 +18,7 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
     email: "",
     password: "",
     gender: "",
+    avatar: BlackNinja,
   });
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,24 +29,49 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async () => {
+    try {
+      //console.log("Login successful");
+      const { data } = await api.post("/login", {
+        email: form.email,
+        password: form.password,
+      });
+      console.log("Login successful:", data);
+      onSuccess();
+    } catch (err: any) {
+      console.error("Login failed:", err.response?.data?.message || err.message);
+    }
+  };
+
+  const handleSignup = async () => {
+    try {
+      // console.log("Signup successful");
+       const { data } = await api.post("/register", {
+      //const { data } = await axios.post("http://localhost:4000/api/v1/register", {
+         name: form.username,
+         email: form.email,
+         password: form.password,
+         gender: form.gender,
+         avatar: form.avatar,
+      });
+      console.log("Signup successful:", data);
+       onSuccess();
+    } catch (err: any) {
+      console.error("Signup failed:", err.response?.data?.message || err.message);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (mode === "login") {
-      console.log("LOGIN DATA:", {
-      email: form.email,
-      password: form.password,
-    });
-    // call login API
-  } else {
-      console.log("SIGNUP DATA:", {
-      username: form.username,
-      email: form.email,
-      password: form.password,
-      gender: form.gender,
-    });
-    // call signup API
-  }
-};
+      //console.log("Login successful");
+      await handleLogin();
+    } 
+    else {
+      //console.log("Signup successful");
+      await handleSignup();
+    }
+  };
 
   return (
     <div className="rounded-xl w-full max-w-4xl bg-white grid grid-cols-1 lg:grid-cols-2">
