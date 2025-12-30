@@ -12,10 +12,10 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
   const [mode, setMode] = useState<"login" | "signup">("login");
 
   const [form, setForm] = useState({
-    identifier: "",
     username: "",
     email: "",
     password: "",
+    gender: "",
   });
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +30,7 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
     e.preventDefault();
     if (mode === "login") {
       console.log("LOGIN DATA:", {
-      identifier: form.identifier,
+      email: form.email,
       password: form.password,
     });
     // call login API
@@ -39,6 +39,7 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
       username: form.username,
       email: form.email,
       password: form.password,
+      gender: form.gender,
     });
     // call signup API
   }
@@ -66,12 +67,12 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
               <div>
                 <h2 className="text-black text-xl lg:text-4xl mb-4 lg:mb-8">LOG IN</h2>
                 <input 
-                  type="text"
-                  name="identifier"
-                  value={form.identifier}
+                  type="email"
+                  name="email"
+                  value={form.email}
                   onChange={handleChange}
                   required
-                  placeholder="User"
+                  placeholder="E-mail"
                   className="mb-1 w-full max-w-sm border rounded px-2 lg:px-3 py-0 lg:py-2 placeholder:text-sm lg:placeholder:text-lg"
                   />
                 <input 
@@ -126,10 +127,34 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
                     onChange={handleChange}
                     required
                     placeholder="Password" 
-                    className="w-full max-w-sm border rounded px-2 lg:px-3 py-0 lg:py-2 placeholder:text-sm lg:placeholder:text-lg"
+                    className="mb-1 w-full max-w-sm border rounded px-2 lg:px-3 py-0 lg:py-2 placeholder:text-sm lg:placeholder:text-lg"
                     />
                 </div>
-                <div className='flex justify-center mt-4 -mb-2'>
+                <div className="text-sm lg:text-lg text-gray-800 mt-1 flex flex-col items-start space-y-2">
+                    <label className="flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="male"
+                        required
+                        onChange={handleChange}
+                        className="w-4 h-4"
+                      />
+                      <span>Male</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="female"
+                        required
+                        onChange={handleChange}
+                        className="w-4 h-4"
+                      />
+                      <span>Female</span>
+                    </label>
+                  </div>
+                <div className='flex justify-center mt-2 -mb-2'>
                   <Button
                     type="submit"
                     title='Sign Up'
@@ -138,12 +163,11 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
                   />
                 </div>
                 <div className="mt-6 text-center space-y-2">
-                  <div>
-                    <p className="text-sm lg:text-lg text-gray-800 mt-1">
+                    {/* <p className="text-sm lg:text-lg text-gray-800 mt-1">
                       <input type="checkbox" required/> I agree to the
                       <a href="#" className="text-sm lg:text-lg text-[#0a9c38] hover:underline">Terms & Conditions</a>
-                    </p> 
-                  </div>
+                    </p>  */}
+                  
                   <span>Already have an account?</span>
                   <button className="text-[#0a9c38] hover:underline mt-4" onClick={() => setMode("login")}>Login</button>
                 </div>
