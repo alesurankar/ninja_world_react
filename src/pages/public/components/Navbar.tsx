@@ -4,6 +4,8 @@ import Button from '../../../utils/Button'
 import Modal from '../../../utils/Modal'
 import AuthForm from './AuthForm'
 import api from '../../../utils/api';
+import { useNavigate } from "react-router-dom";
+import Page1 from '../Page1';
 
 interface NavbarProps {
   user: any;
@@ -11,6 +13,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({ user,setUser }: NavbarProps) => {
+    const navigate = useNavigate();
     const [show, setShow] = useState(false);
     
     useEffect(() => {
@@ -39,7 +42,18 @@ const Navbar = ({ user,setUser }: NavbarProps) => {
                     alt="Logo"
                 />
             </div>
-            
+                <button className="hover:underline" onClick={() => navigate("/")}>
+                    Home
+                </button>
+                <button className="hover:underline" onClick={() => navigate("/page1")}>
+                    page1
+                </button>
+                <button className="hover:underline" onClick={() => navigate("/page2")}>
+                    page2
+                </button>
+                <button className="hover:underline" onClick={() => navigate("/page3")}>
+                    page3
+                </button>
             {/* Auth Buttons */}
             <div className='flex items-center justify-between'>
             {user ? (
