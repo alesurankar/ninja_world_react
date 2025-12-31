@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-    "dev:server": "nodemon --watch server server/server.js",
+    "dev:server": "nodemon --watch myServer myServer/server.js",
     "dev:client": "react-scripts start",
     "start": "node server/server.js",
     "build": "react-scripts build",

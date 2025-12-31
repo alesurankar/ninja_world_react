@@ -3,8 +3,6 @@ import { Login } from "../../../assets/images/images";
 import { Signup } from "../../../assets/images/images";
 import Button from "../../../utils/Button";
 import api from "../../../utils/api";
-//import axios from "axios";
-import { BlackNinja } from "../../../assets/images/images";
 
 interface AuthFormProps {
   onSuccess: () => void;
@@ -17,8 +15,6 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
     username: "",
     email: "",
     password: "",
-    gender: "",
-    avatar: BlackNinja,
   });
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,44 +27,47 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
 
   const handleLogin = async () => {
     try {
-      //console.log("Login successful");
+      console.log("Login successful");
       const { data } = await api.post("/login", {
         email: form.email,
         password: form.password,
-      });
-      console.log("Login successful:", data);
+      }); 
+      console.log("Login payload:", data);
       onSuccess();
-    } catch (err: any) {
-      console.error("Login failed:", err.response?.data?.message || err.message);
+    }
+    catch (err: any) {
+      console.error(
+        "Login failed:",
+        err.response?.data?.message || err.message
+      );
     }
   };
 
   const handleSignup = async () => {
     try {
-      // console.log("Signup successful");
-       const { data } = await api.post("/register", {
-      //const { data } = await axios.post("http://localhost:4000/api/v1/register", {
-         name: form.username,
-         email: form.email,
-         password: form.password,
-         gender: form.gender,
-         avatar: form.avatar,
+      console.log("Register successful");
+      const { data } = await api.post("/register", {
+        name: form.username,
+        email: form.email,
+        password: form.password,
       });
       console.log("Signup successful:", data);
-       onSuccess();
-    } catch (err: any) {
-      console.error("Signup failed:", err.response?.data?.message || err.message);
+      //onSuccess();
+    } 
+    catch (err: any) {
+      console.error(
+        "Signup failed:",
+        err.response?.data?.message || err.message
+      );
     }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (mode === "login") {
-      //console.log("Login successful");
       await handleLogin();
     } 
     else {
-      //console.log("Signup successful");
       await handleSignup();
     }
   };
@@ -158,30 +157,6 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
                     className="mb-1 w-full max-w-sm border rounded px-2 lg:px-3 py-0 lg:py-2 placeholder:text-sm lg:placeholder:text-lg"
                     />
                 </div>
-                <div className="text-sm lg:text-lg text-gray-800 mt-1 flex flex-col items-start space-y-2">
-                    <label className="flex items-center space-x-2">
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="male"
-                        required
-                        onChange={handleChange}
-                        className="w-4 h-4"
-                      />
-                      <span>Male</span>
-                    </label>
-                    <label className="flex items-center space-x-2">
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="female"
-                        required
-                        onChange={handleChange}
-                        className="w-4 h-4"
-                      />
-                      <span>Female</span>
-                    </label>
-                  </div>
                 <div className='flex justify-center mt-2 -mb-2'>
                   <Button
                     type="submit"
@@ -191,11 +166,6 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
                   />
                 </div>
                 <div className="mt-6 text-center space-y-2">
-                    {/* <p className="text-sm lg:text-lg text-gray-800 mt-1">
-                      <input type="checkbox" required/> I agree to the
-                      <a href="#" className="text-sm lg:text-lg text-[#0a9c38] hover:underline">Terms & Conditions</a>
-                    </p>  */}
-                  
                   <span>Already have an account?</span>
                   <button className="text-[#0a9c38] hover:underline mt-4" onClick={() => setMode("login")}>Login</button>
                 </div>

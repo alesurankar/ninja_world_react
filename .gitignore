@@ -7,17 +7,12 @@ build/
 client/build/
 dist/
 
-# Server files
-server/controllers/*
-server/data/*
-server/models/*
-
 # Environment files
 !config.env.example
 .env
 .env.local
-server/config/config.env
-server/config/.config.env
+myServer/config/config.env
+myServer/config/.config.env
 client/.env
 client/.env.local
 
