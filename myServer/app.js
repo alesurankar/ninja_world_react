@@ -29,9 +29,10 @@ app.use(cookieParser()); // Parse cookies from requests
 
 // Import API Routes
 const user = require('./routes/userRoute');
-
+const commentRoutes = require("./routes/commentRoute");
 // Mount API Routes with /api/v1 prefix
 app.use('/api/v1', user);
+app.use("/api/v1", commentRoutes);
 
 // Production vs Development Environment Setup
 if (process.env.NODE_ENV === 'production') {
