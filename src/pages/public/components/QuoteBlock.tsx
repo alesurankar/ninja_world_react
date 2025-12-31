@@ -25,7 +25,7 @@ const QuoteBlock = ({image = BlackNinja,text,author = "Anonymous"}: QuoteBlockPr
                     <img src={QuoteIcon} alt='Quote' className='w-full h-full'/>
                 </div>
                 <div className="flex-1 min-w-0 mt-1 lg:-mt-10 lg:ml-24">
-                    <p className="text-md lg:text-lg text-black break-words">{text}</p>
+                    <p className="text-md lg:text-lg text-black break-all">{text}</p>
                     <p className="mt-2 lg:mr-12 text-right text-lg lg:text-xl text-black font-bold">{author}</p>
                 </div>
             </div>
