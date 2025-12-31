@@ -1,7 +1,17 @@
+import { useEffect, useState } from "react";
+import api from "../../../utils/api";
 import Button from '../../../utils/Button'
 import { HeroBg } from '../../../assets/images/images'
 
 const Hero = () => {
+    const [user, setUser] = useState<any>(null);
+
+    useEffect(() => {
+        api.get("/me")
+        .then(res => setUser(res.data.user))
+        .catch(() => setUser(null));
+    }, []);
+
     return (
         <section className="relative w-screen min-h-screen px-8 py-20 lg:p-24
                  flex items-center justify-center lg:justify-between
@@ -17,7 +27,10 @@ const Hero = () => {
                 </h1>
                 
                 <p className="text-lg text-white/80 py-10">
-                    This is a sample landing page. Build using React and Tailwind CSS.
+                    logged in as{" "}
+                    <span className="font-semibold">
+                        {user ? user.name : "Guest"}
+                    </span>
                 </p>
                 
                 <Button

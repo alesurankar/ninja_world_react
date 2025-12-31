@@ -11,7 +11,7 @@ useEffect(() => {
     if (!ALLOW_ACCESS) {
       navigate("/", { replace: true });
     }
-  }, [ALLOW_ACCESS, navigate]);
+  }, [navigate]);
 
   if (!ALLOW_ACCESS) return null;
   return <Outlet />;

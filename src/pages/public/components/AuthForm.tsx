@@ -52,7 +52,7 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
         password: form.password,
       });
       console.log("Signup successful:", data);
-      //onSuccess();
+      onSuccess();
     } 
     catch (err: any) {
       console.error(
