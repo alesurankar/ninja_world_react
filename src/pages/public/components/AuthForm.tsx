@@ -6,9 +6,10 @@ import api from "../../../utils/api";
 
 interface AuthFormProps {
   onSuccess: () => void;
+  setUser: (user: any) => void;
 }
 
-const AuthForm = ({ onSuccess }: AuthFormProps) => {
+const AuthForm = ({ onSuccess, setUser }: AuthFormProps) => {
   const [mode, setMode] = useState<"login" | "signup">("login");
 
   const [form, setForm] = useState({
@@ -27,12 +28,13 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
 
   const handleLogin = async () => {
     try {
-      console.log("Login successful");
+      //console.log("Login successful");
       const { data } = await api.post("/login", {
         email: form.email,
         password: form.password,
       }); 
-      console.log("Login payload:", data);
+      //console.log("Login payload:", data);
+      setUser(data.user);
       onSuccess();
     }
     catch (err: any) {
@@ -45,13 +47,14 @@ const AuthForm = ({ onSuccess }: AuthFormProps) => {
 
   const handleSignup = async () => {
     try {
-      console.log("Register successful");
+      //console.log("Register successful");
       const { data } = await api.post("/register", {
         name: form.username,
         email: form.email,
         password: form.password,
       });
-      console.log("Signup successful:", data);
+      //console.log("Signup successful:", data);
+      setUser(data.user);
       onSuccess();
     } 
     catch (err: any) {

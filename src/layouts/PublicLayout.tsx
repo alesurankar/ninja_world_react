@@ -1,9 +1,14 @@
 import { Outlet } from "react-router-dom";
 
-const PublicLayout = () => {
+interface PublicLayoutProps {
+  user: any;
+  setUser: (user: any) => void;
+}
+
+const PublicLayout = ({ user,setUser }: PublicLayoutProps) => {
   return (
     <div className="main">
-      <Outlet />
+      <Outlet context={{ user,setUser }}/>
     </div>
   );
 };

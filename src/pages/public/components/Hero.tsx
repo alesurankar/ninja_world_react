@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
-import api from "../../../utils/api";
 import Button from '../../../utils/Button'
 import { HeroBg } from '../../../assets/images/images'
 
-const Hero = () => {
-    const [user, setUser] = useState<any>(null);
+interface HeroProps {
+  user: any; // or proper type
+}
 
-    useEffect(() => {
-        api.get("/me")
-        .then(res => setUser(res.data.user))
-        .catch(() => setUser(null));
-    }, []);
-
+const Hero = ({ user }: HeroProps) => {
     return (
         <section className="relative w-screen min-h-screen px-8 py-20 lg:p-24
                  flex items-center justify-center lg:justify-between
