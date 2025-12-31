@@ -19,16 +19,15 @@ exports.registerUser = asyncErrorHandler(async (req, res, next) => {
     const { name, email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: "User already exists" });
-        }
+    if (existingUser) {
+        return res.status(400).json({ message: "User already exists" });
+    }
 
     const user = await User.create ({
         name,
         email,     
         password,
     });
-    //res.status(200).json({ message: "Data received successfully", received: user});
     sendToken(user, 201, res);
 });
 
@@ -40,12 +39,19 @@ exports.registerUser = asyncErrorHandler(async (req, res, next) => {
  * @access Public
  */
 exports.loginUser = asyncErrorHandler(async (req, res, next) => {
-    console.log("🔥 loginUser Triggered");
+    console.log("🔥 loginUser triggered");
 
     const { email, password } = req.body;
-    const user = {
-        email,    
-        password,
-    };
-    res.status(200).json({ message: "Dummy login successful", received: user});
+    
+    const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+        return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    const isPasswordMatched = await user.comparePassword(password);
+    if (!isPasswordMatched) {
+        return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    sendToken(user, 200, res);
 });
