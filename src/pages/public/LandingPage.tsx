@@ -7,7 +7,7 @@ import { useOutletContext } from "react-router-dom";
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Video from './components/Video'
-import Tools from './components/Tools'
+import Partners from './components/Partners'
 import Weapons from './components/Weapons'
 import GetInTouch from './components/GetInTouch'
 import Fetch from './components/Fetch'
@@ -25,17 +25,15 @@ const LandingPage = () => {
 
       <Hero user={user}/>
 
-      <Video />
-
-      <Tools />
+      <Partners />
     
       <Weapons />
 
-      <GetInTouch />
+      {!user && <GetInTouch />}
       
-      <Fetch user={user}/>
+      {user && <Fetch user={user}/>}
 
-      <Footer />
+      {!user && <Footer />}
     </div>
   )
 }
