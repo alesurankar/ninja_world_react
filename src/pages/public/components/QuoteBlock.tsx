@@ -35,22 +35,22 @@ const QuoteBlock = ({image = BlackNinja,text,author = "Anonymous"}: QuoteBlockPr
 
 const QuoteIn = () => {
     const [comment, setComment] = useState("");
-    const [rating, setRating] = useState(5);
+    const [loading, setLoading] = useState(false);
 
-    const submitReview = async () => {
-        if (!comment) return alert("Comment cannot be empty!");
+   const submitComment = async () => {
+        if (!comment.trim()) return alert("Comment cannot be empty!");
 
+        setLoading(true);
         try {
-            const response = await api.put("/review", {
-                comment,
-                rating,
-            });
-            console.log("API response:", response.data);
-            alert("Review submitted!");
-            setComment("");
+            const response = await api.post("/comments", { text: comment });
+            console.log("Comment created:", response.data.comment);
+            alert("Comment submitted!");
+            setComment(""); // clear textarea
         } catch (err: any) {
             console.error("API error:", err.response?.data || err.message);
-            alert("Failed to submit review");
+            alert("Failed to submit comment");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -63,7 +63,7 @@ const QuoteIn = () => {
                         title='Submit'
                         mainClassName='bg-[#4a5748] hover:bg-[#283227ff]'
                         titleClassName='text-xl text-white'
-                        onClick={submitReview}
+                        onClick={submitComment}
                     /> 
                 </div>
             </div> 
