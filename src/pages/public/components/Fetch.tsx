@@ -3,26 +3,30 @@ import { QuoteBlock, QuoteIn } from "./QuoteBlock";
 import { RedNinja } from '../../../assets/images/images'
 import api from '../../../utils/api';
 
+interface Props {
+  user: any;
+}
 
-const Fetch = () => {
+const Fetch = ({ user }: Props) => {
     const [comments, setComments] = useState<any[]>([]);
 
+    const fetchComments = async () => {
+        if (!user) return;
+        try {
+        const { data } = await api.get("/comments");
+        setComments(data.comments);
+        } catch (err) {
+        console.error("Failed to fetch comments:", err);
+        }
+    };
+
     useEffect(() => {
-        const fetchComments = async () => {
-            try {
-                const { data } = await api.get("/comments");
-                setComments(data.comments); 
-            } 
-            catch (err) {
-                console.error("Failed to fetch comments:", err);
-            }
-        };
         fetchComments();
-    }, []);
+    }, [user]);
 
     return (
         <>
-            <QuoteIn />
+            <QuoteIn onCommentAdded={fetchComments}/>
             {comments.length === 0 ? (
                 <QuoteBlock
                     key="no-comments"

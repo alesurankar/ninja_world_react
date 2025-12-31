@@ -33,7 +33,7 @@ const LandingPage = () => {
 
       <GetInTouch />
       
-      <Fetch />
+      <Fetch user={user}/>
 
       <Footer />
     </div>

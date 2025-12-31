@@ -1,11 +1,11 @@
 import Button from '../../../utils/Button'
 import { HeroBg } from '../../../assets/images/images'
 
-interface HeroProps {
-  user: any; // or proper type
+interface Props {
+  user: any;
 }
 
-const Hero = ({ user }: HeroProps) => {
+const Hero = ({ user }: Props) => {
     return (
         <section className="relative w-screen min-h-screen px-8 py-20 lg:p-24
                  flex items-center justify-center lg:justify-between

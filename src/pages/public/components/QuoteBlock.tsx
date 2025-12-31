@@ -11,7 +11,7 @@ interface QuoteBlockProps {
 }
 
 interface QuoteInProps {
-  productId: string;
+  onCommentAdded: () => void;
 }
 
 const QuoteBlock = ({image = BlackNinja,text,author = "Anonymous"}: QuoteBlockProps) => {
@@ -33,7 +33,7 @@ const QuoteBlock = ({image = BlackNinja,text,author = "Anonymous"}: QuoteBlockPr
     )
 }
 
-const QuoteIn = () => {
+const QuoteIn = ({ onCommentAdded }: QuoteInProps) => {
     const [comment, setComment] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -43,9 +43,10 @@ const QuoteIn = () => {
         setLoading(true);
         try {
             const response = await api.post("/comments", { text: comment });
-            console.log("Comment created:", response.data.comment);
-            alert("Comment submitted!");
-            setComment(""); // clear textarea
+            //console.log("Comment created:", response.data.comment);
+            //alert("Comment submitted!");
+            setComment("");
+            onCommentAdded();
         } catch (err: any) {
             console.error("API error:", err.response?.data || err.message);
             alert("Failed to submit comment");
