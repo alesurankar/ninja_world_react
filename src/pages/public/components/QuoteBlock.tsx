@@ -33,7 +33,7 @@ const QuoteBlock = ({image = BlackNinja,text,author = "Anonymous"}: QuoteBlockPr
     )
 }
 
-const QuoteIn = ({ productId }: QuoteInProps) => {
+const QuoteIn = () => {
     const [comment, setComment] = useState("");
     const [rating, setRating] = useState(5);
 
@@ -44,7 +44,6 @@ const QuoteIn = ({ productId }: QuoteInProps) => {
             const response = await api.put("/review", {
                 comment,
                 rating,
-                productId,
             });
             console.log("API response:", response.data);
             alert("Review submitted!");
