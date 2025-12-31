@@ -4,7 +4,9 @@
  * password reset, and admin user management for the PetShop application
  */
 
+const User = require('../models/userModel');
 const asyncErrorHandler = require('../middlewares/helpers/asyncErrorHandler');
+const sendToken = require('../utils/sendToken');
 
 /**
  * Register New User
@@ -15,12 +17,19 @@ exports.registerUser = asyncErrorHandler(async (req, res, next) => {
     console.log("🔥 registerUser triggered");
 
     const { name, email, password } = req.body;
-    const user = {
+
+    const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "User already exists" });
+        }
+
+    const user = await User.create ({
         name,
         email,     
         password,
-    };
-    res.status(200).json({ message: "Data received successfully", received: user});
+    });
+    //res.status(200).json({ message: "Data received successfully", received: user});
+    sendToken(user, 201, res);
 });
 
 
